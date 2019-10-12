@@ -1,6 +1,7 @@
-#Yorum Satırı
-#Ekranı Silme => Ctrl + L
+# Yorum Satırı
+# Ekranı Silme => Ctrl + L
 # Satır satır çalıştırma => Ctrl + Enter
+# kare **2
 
 #Assigment Operatörü
 x = 5
@@ -92,6 +93,135 @@ x
 # aşağıdaki vektörü 3 defa tekrarlatır.
 x<- rep(1:3, times = 3)
 x
+
+# 1'den 3'e kadar(3 dahil) 3 tekrarlı ekletir.
+x<- rep(1:3, each = 3)
+x
+
+#1'den 4'e kadar 4 dahil değerler oluştur.
+x <- 1:4
+x
+#3'den 6'e kadar 6 dahil değerler oluştur.
+y <- 3:6
+y
+
+x+y
+x*y
+x>y
+
+
+#rastgele 100 say üretir. observed değişkenine atar
+observed <- rnorm (100)
+
+#rastgele 100 say üretir. predicted değişkenine atar
+predicted <- rnorm (100)
+
+#observed - predicted farkını alıp karesini alıp ortalamlarını alır.
+mse <- mean((observed - predicted)**2)
+mse
+
+
+#Matrix'ler
+M <- matrix (1:6, nrow= 3)
+M
+
+#Sonuç:
+#       [,1] [,2]
+#[1,]    1    4
+#[2,]    2    5
+#[3,]    3    6
+
+#ilk önce satırları doldurmak için 
+M <- matrix (1:6, nrow= 3, byrow=TRUE)
+M
+#Sonuç : Satırlardan başlayarak doldurdu.
+#     [,1] [,2]
+#[1,]    1    2
+#[2,]    3    4
+#[3,]    5    6
+
+# 2. satır 1. sütunu getirir.
+M[2,1]
+
+# 2. satırı getir.
+M[2,]
+
+# 2. sütunu getir.
+M[,2]
+
+
+
+#Matris'ler
+M <- matrix(1:6,ncol=3)
+N <- matrix(3:8,ncol=3)
+
+M+N
+M*N
+
+#Matris çarpımı
+M %*% N
+
+
+
+#Data Frame'ler
+mtcars
+
+#satırlar = gözlem
+#sütunlar = değişken
+
+#ilk 6 satırı getirir
+head(mtcars)
+
+#ilk 3 satırı getirir
+head(mtcars,3)
+
+#son altı satırı getirir
+tail(mtcars)
+
+#verinin öniizlemesini yapar
+str(mtcars)
+
+
+
+#runif min ve max vermezsek 0 ile 1 arası değerler üretir.
+
+#rastgele 10 değer üret ve 0.5'den büyükse Erkek değilse kadın olarak belirle 
+gender <- ifelse(runif(10)>0.5, "Male", "Female")
+gender
+class(gender)
+
+#Nominal Kategorik Değişken
+#Kategorik değişken olarak ayırmış oldu.
+gender_f <-factor(gender)
+gender_f
+
+#Değişkenler arasından değer seçer
+sample(c("A","B","C","D","F"))
+
+#Ordinel Kategorik Değişken
+#Kategorik değişkenlerin sıralaması önemli olduğunda kullanılır
+grade <- sample(c("A","B","C","D","F"), size = 20, replace = TRUE)
+#size : üretilecek miktarı verir
+#replace : değer ürettikten sonra içini boşaltmadan tekrar aynı değeri koyar.
+grade
+grade <- factor(grade)
+grade
+
+#sıralama yapmak için ordered kullanılır.
+grade <- factor(grade, ordered = TRUE)
+grade
+
+#Küçükten büyüğe sıralama tanımlamak için level kullanılır.
+grade <- factor(grade, ordered = TRUE, levels = c("F","D","C","B","A"))
+grade
+
+#============================================================================
+id <- 1:10
+age <- as.integer(runif(10, min =20, max = 40))
+gender <- ifelse(runif(10)>0.5, "Male", "Female")
+
+df <- data.frame(id,age,gender)
+df
 
 
 
