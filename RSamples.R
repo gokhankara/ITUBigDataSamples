@@ -223,10 +223,51 @@ gender <- ifelse(runif(10)>0.5, "Male", "Female")
 df <- data.frame(id,age,gender)
 df
 
+#birinci satırı verir
+df[1,]
+
+#2. ve 3. sütunu verir.
+df[, 2:3]
+
+#age sütununu verir
+df[,"age"]
 
 
+#female'lerin yaşlarının ortlaamasını bulun?
+  ix_female <-  df[,"gender"]== "Female"
+  ix_female
+  
+  #Kadınların yaşlarını ver
+  df[ix_female,"age"]
+  
+  #bu yaşların ortalamarını ver
+  mean(df[ix_female,"age"])
 
+#List Veri Tipi
+#Farklı tipdeki değişkenleri tutar.
 
+#Vektör
+my_vec <- 1:10
+
+#matris
+my_mat <- matrix(my_vec,ncol=5)
+
+#dataframe
+my_df <- mtcars[1:5,]
+
+#listeye yukarıda tanımladığımız , vektör, matris ve dataframe'i ekliyoruz. 
+my_list <- list(vec=my_vec,
+                mat = my_mat, 
+                df= my_df)
+my_list
+
+#my_list içindeki dataframe'deki mpg sütununa erişimek için kullanılır.
+my_list$df$mpg
+
+#tidyverse kütüphanesini yüklemek için kullanılır.
+#install.packages("tidyverse")
+
+library(tidyverse)
 
 
 
