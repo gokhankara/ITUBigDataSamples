@@ -316,3 +316,67 @@ filter(nba,Pos=="G")
 #regular expression ile kullanmak için ise
 #Sonu G ile biten filtrelemelerde kullanılır.
 filter(nba, grepl("G$",Pos))
+
+mutate(nba, PPG = PTS / G)
+
+transmute(nba,PPG= PTS /G)
+
+summarise(nba, meanPTS = mean(PTS, na.rm = TRUE))
+
+#nba değişkenindeki Tm sütununa göre grupla
+df <- group_by(nba, Tm)
+#gruplanan Tm sutununa göre takımların sezonluk ortalamalarını alır.
+summarise(df, meanPTS = mean(PTS,na.rm= TRUE))
+
+
+df1 <- select(nba, Player, Age, Pos, Tm, G, PTS, Year)
+df2 <- mutate (df1, PPG = PTS/G)
+# is.na ilgili alanın boş olanlarını getirir. ! değil anlamına gelir
+df3 <- filter (df2, !is.na(PPG), Year >1990)
+df4 <- group_by(df3, Tm, Pos)
+summarise(df4, meanPPG = mean (PPG, na.rm = TRUE), count=n())
+
+
+#MP: Bir sezondaki oynadığı dakika
+#PTS : Bir sezondaki attığı sayı
+# n() kaç satır olduğunu verir.
+
+df1 <- select (nba, Player, MP, PTS)
+df2 <- mutate (df1, PP48M = (PTS/MP)*48)
+df3 <- filter (df2, !is.na(PP48M))
+df4 <- group_by(df3,Player)
+df5 <- summarise(df4 , meanPP48M= mean(PP48M), season = n())
+df6 <- filter(df5, season > 4)
+df7 <- arrange(df6,desc(meanPP48M))
+
+
+#yukarıdakine eşit olarak aşağıdaki de yazılabilir
+nba %>% 
+  select(Player,MP,PTS) %>% 
+  mutate(PP48M = (PTS/MP)*48) %>% 
+  filter(!is.na(PP48M)) %>% 
+  group_by(Player) %>% 
+  summarise(meanPP48M = mean(PP48M,na.rm =TRUE), season = n())   %>% 
+  filter(season>=5)  %>% 
+  arrange(desc(meanPP48M))
+
+
+#%in% içerenleri getirir
+#=============================================================================
+df <- nba %>%
+  select(Player, Age, Year, PTS, G)%>%
+  mutate (PPG = PTS /G)%>%
+  filter (!is.na(PPG)) %>%
+  filter(Player %in% c("Michael Jordan*",
+                       "Kevin Durant",
+                       "LeBron James",
+                       "Carmelo Anthony"))
+  
+       
+  ggplot(df,aes(x = Age, y = PPG)) +
+        geom_point(size = 3,  color = "red") +
+        geom_smooth(size = 0.5, color = "green")
+  
+
+
+
