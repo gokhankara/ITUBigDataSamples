@@ -60,10 +60,38 @@ x <- c(30,40,-20,-10,50)
 ix <- x>0
 x[ix]
 
+#Random sayı üretme
+#3 ile 10 arasında 10 tane sayı üretme
+x <- runif(10, min = 3, max = 10)
+#Ortalaması 5 olan standart sapması 1.3 olan 10 sayı
+x <- rnorm(10,mean = 5, sd=1.3)
+
+# 100 tane sayı üretip x değişkenine atayalım sonra da -0,5 ile 0,5 arasondaki değerleri 0 yapalım.
+x <- rnorm(100)
+ix <-  x > -0.5 &  x < 0.5
+ix
+x[ix]<-0
+x
 
 
+#vektörler üzerinde kullanılabilecek fonksiyonlar
+#vektörün toplamını verir
+sum(x)
+#vektörün ortlamasını verir
+mean(x)
+#vektörün kapasitesini verir
+length(x)
 
+# 3'den başla 13'e kadar 4'er 4'er ilerle
+x <- seq(3,13,by=4)
 
+#3 ile 13 arasında eşit aralıklarda 7 tane sayı üretme
+x <- seq(3,13,length.out = 7)
+x
+
+# aşağıdaki vektörü 3 defa tekrarlatır.
+x<- rep(1:3, times = 3)
+x
 
 
 
