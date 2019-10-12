@@ -374,8 +374,8 @@ df <- nba %>%
   
        
   ggplot(df,aes(x = Age, y = PPG)) +
-        geom_point(size = 3,  color = "red") +
-        geom_smooth(size = 0.5, color = "green")
+        geom_point(size = 3, aes(color = Player)) +
+        geom_smooth(size = 0.5, aes(color = Player))
   
 
 
