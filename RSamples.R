@@ -268,6 +268,51 @@ my_list$df$mpg
 #install.packages("tidyverse")
 
 library(tidyverse)
+#sütunların data tiplerini vermedik. Bu yüzden sistem ilk 100 satıra bakar ve kendi yorumlar
+nba <- read_csv("R/Seasons_Stats.csv")
+
+# Hata payını düşürmek için ilk 5000 satıra bakmasını istediğimizde aşağıdaki parametre kullanılır.
+nba <- read_csv("R/Seasons_Stats.csv", guess_max = 20000)
+View(nba)
+
+glimpse(nba)
+nba
+#nba değişkeninde Player sütununu getirir
+select(nba,Player)
+#nba değişkeninde Player ve Age sütunlarını getirir
+select(nba,Player,Age)
+
+#nba değişkeninde Player ve Age'den MP'ye kadar tüm sütunları sırayla getirir
+select(nba,Player, Age:MP)
+
+#nba değişkeninde Player ve GS olmayan tüm sütunları sırayla getirir
+select(nba,Player,-GS)
+
+#nba değişkeninde Player, Age, Pos, PTS'den sonra tüm sütunları sırayla getirir
+select(nba,Player,Age,Pos,PTS,everything())
+
+#Sütunlarda "FG" ile başlayan sütunları getirir
+select (nba, starts_with("FG"))
+#Sütunlarda "%" ile biten sütunları getirir
+select (nba, ends_with("%"))
+#Sütunlarda "RB" içeren sütunları getirir
+select (nba, contains("RB"))
+#Sütunlarda "X1" sütununun ismini "index" ile değiştirir.
+rename(nba,index=X1)
 
 
 
+# , and için kullanılır. | ise veya amacı ile kullanılır.
+#satırlarda işlem yapmak için filter kullanılır
+filter(nba,Age >25)
+
+filter(nba,Age >25 | Year >2010)
+
+filter(nba,between(Age, 22,26))
+
+#Pozisyonu Guard olanlar için kullanılır.
+filter(nba,Pos=="G")
+
+#regular expression ile kullanmak için ise
+#Sonu G ile biten filtrelemelerde kullanılır.
+filter(nba, grepl("G$",Pos))
