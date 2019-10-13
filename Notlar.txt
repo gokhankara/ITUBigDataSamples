@@ -1,0 +1,8 @@
+Kolerasyon
+Korelasyon, olasýlýk kuramý ve istatistikte iki veya daha fazla raslantýsal deðiþken arasýndaki doðrusal iliþkinin yönünü ve gücünü gösterir. Ýki deðiþken arasýndaki iliþki miktarý, ikili ya da basit korelasyon denen korelasyon teknikleriyle hesaplanýr.
+
+Kovalans
+
+
+Ýlk önce kolerasyona bakarýz
+ikki deðiþken arasýnda kolerasyon varsa regresyona bakýlýr. Yoksa hiç regrasyona bakmaya gerek kalmaz.
