@@ -1,0 +1,5 @@
+Google Trends
+https://trends.google.com.tr
+
+Apache Projects
+https://projects.apache.org/projects.html?category#sql
