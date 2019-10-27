@@ -2,6 +2,7 @@ Google Trends
 https://trends.google.com.tr
 
 Apache Projects
+<<<<<<< HEAD
 https://projects.apache.org/projects.html?category#sql
 
 Data Economy
@@ -38,3 +39,6 @@ https://www.asimovinstitute.org/neural-network-zoo/
 
 
 https://experiments.withgoogle.com/
+=======
+https://projects.apache.org/projects.html?category#sql
+>>>>>>> 463fd9379adcbec7c7507e9134d61053c348e1e7
